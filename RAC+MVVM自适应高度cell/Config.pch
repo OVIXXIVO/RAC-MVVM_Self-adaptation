@@ -1,0 +1,48 @@
+//
+//  Config.pch
+//  RAC+MVVM自适应高度cell
+//
+//  Created by 王子翰 on 2017/3/3.
+//  Copyright © 2017年 王子翰. All rights reserved.
+//
+
+#ifndef Config_pch
+#define Config_pch
+
+#import "AppDelegate.h"
+#import "ReactiveCocoa.h"
+#import "RACReturnSignal.h"
+#import "AFNetworkingTool.h"
+
+//自动提示宏
+#define keyPath(objc,keyPath) @(((void)objc.keyPath, #keyPath))
+
+#define DEF_Appdelegate  (AppDelegate *)[UIApplication sharedApplication].delegate
+
+#define DEF_App_Window  [(AppDelegate *)[UIApplication sharedApplication].delegate window]
+
+#define DEF_Screen_Full [UIScreen mainScreen].bounds
+
+#define DEF_Screen_Width [UIScreen mainScreen].bounds.size.width
+
+#define DEF_Screen_Height [UIScreen mainScreen].bounds.size.height
+
+#define DEF_Device [UIScreen mainScreen].bounds.size.width / 375.00f
+
+#endif /* Config_pch */
+
+/**
+ *  给NSLog起一个别名
+ *  DEBUG代表调试状态
+ *  @param ... 为可变参数
+ *  @param __VA_ARGS__ 为固定格式
+ */
+#ifdef DEBUG
+
+#define OVLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __FUNCTION__, __LINE__, __VA_ARGS__);
+
+#else//else可以不写
+
+#define OVLog(...) //不打印任何内容   ...标示宏定义的可变参数
+
+#endif /* Config_pch */
